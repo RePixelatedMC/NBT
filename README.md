@@ -34,29 +34,50 @@ iteration.
 * [LongArrayTagPackedIntegers](src/main/java/io/github/ensgijs/nbt/mca/util/LongArrayTagPackedIntegers.java) a comprehensive solution to working with all long[] packed values (block palettes, biome palettes, Heightmaps) across all DataVersions.
 * [PalettizedCuboid](src/main/java/io/github/ensgijs/nbt/mca/util/PalettizedCuboid.java) powerful class for working with block and biome palettes. This class supports all MC versions that use data palettes; I may add block and biome child classes to improve usability in the future.
 
-#### How to get started with 0.1-SNAPSHOT
-This package is not yet published to a public repository - but using it from a local build is easy!
+#### How to get started
+You can consume this project directly from JitPack.
 
-Download the source, open the project in your IDE of choice (Intellij, etc), run the gradle rule
-`gradle publishToMavenLocal` to build the source and stash the 0.1-SNAPSHOT in your local maven cache.
+Gradle (in your consuming project's `settings.gradle`):
+```
+dependencyResolutionManagement {
+	repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+	repositories {
+		mavenCentral()
+		maven { url 'https://jitpack.io' }
+	}
+}
+```
 
-Gradle:
+Gradle dependency:
 ```
 dependencies {
-	...
-	implementation 'io.github.ensgijs:ens-nbt:0.1-SNAPSHOT'
+	implementation 'com.github.RePixelatedMC:NBT:<tag-or-commit>'
+	// or use latest master branch snapshot:
+	// implementation 'com.github.RePixelatedMC:NBT:master-SNAPSHOT'
 }
 ```
 
 Maven:
 ```
+<repositories>
+	<repository>
+		<id>jitpack.io</id>
+		<url>https://jitpack.io</url>
+	</repository>
+</repositories>
+
 <dependency>
-    <groupId>io.github.ensgijs</groupId>
-    <artifactId>ens-nbt</artifactId>
-    <version>0.1-SNAPSHOT</version>
-    <scope>compile</scope>
+	<groupId>com.github.RePixelatedMC</groupId>
+	<artifactId>NBT</artifactId>
+	<version>&lt;tag-or-commit&gt;</version>
 </dependency>
 ```
+
+For local development, you can still install to your local Maven cache with:
+`./gradlew publishToMavenLocal`
+
+Local artifact coordinates:
+`io.github.ensgijs:ens-nbt:0.1-SNAPSHOT`
 
 
 ---
